@@ -1,0 +1,30 @@
+type: fields
+fields:
+  ogimage:
+    type: files
+    multiple: false
+    label: 
+      en: Opengraph Image
+      de: Opengraph Bild
+    help: 
+      en: Must have a minimum size of 1200x630px
+      de: Bild muss mindestens eine Größe von 1200x630px haben
+    uploads:
+      template: opengraph-image
+
+  desc:
+    type: textarea
+    buttons: false
+    label: 
+      en: Site description
+      de: Seitenbeschreibung
+    help:
+      en: Short description of your website for search engines
+      de: Kurze Beschreibung Ihrer Website für Suchmaschinen
+
+  metatags:
+    label: Meta Tags
+    help: 
+      en: Keywords that describe your site
+      de: Schlagwörter die Ihre Seite beschreiben
+    type: tags

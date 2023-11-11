@@ -1,0 +1,7 @@
+title: Cover image
+
+accept: 
+  mime: image/*
+  type: image
+  minwidth: 1200
+  minheight: 630

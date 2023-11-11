@@ -1,0 +1,11 @@
+type: files
+label: 
+  de: Cover Bild
+  en: Cover Image
+multiple: false
+layout: cards
+size: medium
+uploads: cover
+image:
+  cover: true
+  ratio: 16/9

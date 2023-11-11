@@ -1,0 +1,10 @@
+node_modules
+vendor
+
+example/*
+
+!example/index.php
+!example/content
+!example/blueprints
+!example/config
+!example/composer.json

@@ -1,0 +1,21 @@
+{
+  "name": "stat0/common",
+  "description": "Stat0 Common Plugin",
+  "type": "kirby-plugin",
+  "version": "1.0.0",
+  "license": "Proprietary",
+  "authors": [
+    {
+      "name": "stat0",
+      "email": "info@stat0.de"
+    }
+  ],
+  "require": {
+		"getkirby/composer-installer": "^1.1"
+	},
+  "config": {
+    "allow-plugins": {
+      "getkirby/composer-installer": true
+    }
+  }
+}
