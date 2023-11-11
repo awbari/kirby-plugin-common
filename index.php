@@ -61,7 +61,7 @@ App::plugin('stat0/common', [
     'meta' => __DIR__ . '/snippets/meta.php'
   ],
   'blueprints' => [
-    'sections/seo' => __DIR__ . '/blueprints/sections/seo.yml',
+    'sections/meta' => __DIR__ . '/blueprints/sections/seo.yml',
     'files/opengraph-image' => __DIR__ . '/blueprints/files/opengraph-image.yml',
     'files/cover' => __DIR__ . '/blueprints/files/cover.yml',
     'fields/cover' => __DIR__ . '/blueprints/fields/cover.yml',

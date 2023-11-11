@@ -10,5 +10,6 @@ echo (new Kirby([
     'base' => __DIR__,
     'blueprints' => __DIR__ . '/blueprints',
     'config' => __DIR__ . '/config',
+    'templates' => __DIR__ . '/templates',
   ]
 ]))->render();

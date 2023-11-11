@@ -1,0 +1,5 @@
+title: Foo
+
+columns:
+  - sections:
+      meta: sections/meta

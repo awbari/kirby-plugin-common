@@ -1,10 +1,12 @@
+.vscode
 node_modules
 vendor
 
 example/*
 
 !example/index.php
+!example/composer.json
+!example/templates
 !example/content
 !example/blueprints
 !example/config
-!example/composer.json
