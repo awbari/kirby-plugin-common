@@ -4,6 +4,7 @@
   <?= snippet('meta') ?>
 </head>
 <body>
-  Default
+  <h1><?= $page->title() ?></h1>
+  <div><?= $page->text()->esc() ?></div>
 </body>
 </html>
