@@ -1,11 +1,11 @@
 <?php
-  $title = $site->title();
-  $title = $page->title()->isNotEmpty() ? $page->title() . ' | ' . $title : $title;
+  $title = $site->title()->esc();
+  $title = $page->title()->isNotEmpty() ? $page->title()->esc() . ' | ' . $title : $title;
 
-  $desc = $site->description()->isNotEmpty() ? $site->description() : '';
-  $desc = $site->desc()->isNotEmpty() ? $site->desc() : $desc;
-  $desc = $page->description()->isNotEmpty() ? $page->description() : $desc;
-  $desc = $page->desc()->isNotEmpty() ? $page->desc() : $desc;
+  $desc = $site->description()->isNotEmpty() ? $site->description()->esc() : '';
+  $desc = $site->desc()->isNotEmpty() ? $site->desc()->esc() : $desc;
+  $desc = $page->description()->isNotEmpty() ? $page->description()->esc() : $desc;
+  $desc = $page->desc()->isNotEmpty() ? $page->desc()->esc() : $desc;
 
   $tags = $site->metatags()->isNotEmpty() ? $site->metatags()->toString() : '';
 
