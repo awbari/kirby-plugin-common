@@ -4,10 +4,14 @@ use Kirby\Cms\App;
 use Kirby\Http\Response;
 use Kirby\Toolkit\Xml;
 
-function robots() {
-  $robots  = 'User-agent: *' . PHP_EOL;
-  $robots .= 'Allow: /' . PHP_EOL;
-  $robots .= 'Sitemap: ' . url('sitemap.xml');
+function robots(bool $disallow, bool $sitemapEnabled)
+{
+  $robots = 'User-agent: *' . PHP_EOL;
+  $robots .= ($disallow ? 'Disallow: /panel/' : 'Disallow: /') . PHP_EOL;
+
+  if ($sitemapEnabled) {
+    $robots .= $disallow ? '' : 'Sitemap: ' . url('sitemap.xml');
+  }
 
   return App::instance()
     ->response()
@@ -15,18 +19,19 @@ function robots() {
     ->body($robots);
 }
 
-function sitemap() {
-  $kirby   = App::instance();
+function sitemap()
+{
+  $kirby = App::instance();
   $sitemap = [];
-  $cache   = kirby()->cache('pages');
-  $id      = 'sitemap.xml';
+  $cache = kirby()->cache('pages');
+  $id = 'sitemap.xml';
 
   if (!$sitemap = $cache->get($id)) {
     $sitemap[] = '<?xml version="1.0" encoding="UTF-8"?>';
     $sitemap[] = '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
 
     $templates = option('stat0.common.exclude.templates', []);
-    $pages     = option('stat0.common.exclude.pages', []);
+    $pages = option('stat0.common.exclude.pages', []);
 
     foreach ($kirby->site()->index() as $p) {
       if (in_array($p->intendedTemplate()->name(), $templates) === true) {
@@ -45,7 +50,7 @@ function sitemap() {
     }
 
     $sitemap[] = '</urlset>';
-    $sitemap   = implode(PHP_EOL, $sitemap);
+    $sitemap = implode(PHP_EOL, $sitemap);
 
     $cache->set($id, $sitemap);
   }
@@ -56,6 +61,8 @@ function sitemap() {
 App::plugin('stat0/common', [
   'options' => [
     'sitemap.enabled' => false,
+    'robots.enabled' => false,
+    'robots.disallow' => false,
   ],
   'snippets' => [
     'meta' => __DIR__ . '/snippets/meta.php'
@@ -68,22 +75,22 @@ App::plugin('stat0/common', [
   ],
   'routes' => [
     [
-			'pattern' => 'robots.txt',
-			'method'  => 'ALL',
-			'action'  => fn () => option('stat0.common.sitemap.enabled') === true 
-        ? robots()
+      'pattern' => 'robots.txt',
+      'method' => 'ALL',
+      'action' => fn() => option('stat0.common.robots.enabled') === true
+        ? robots(option('stat0.common.robots.disallow'), option('stat0.common.sitemap.enabled'))
         : false,
-		],
+    ],
     [
       'pattern' => 'sitemap.xml',
-      'action'  => fn() => option('stat0.common.sitemap.enabled') === true 
+      'action' => fn() => option('stat0.common.sitemap.enabled') === true
         ? sitemap()
         : false,
     ],
     [
       'pattern' => 'sitemap',
-      'action'  => fn() => option('stat0.common.sitemap.enabled') === true 
-        ? go('sitemap.xml', 301) 
+      'action' => fn() => option('stat0.common.sitemap.enabled') === true
+        ? go('sitemap.xml', 301)
         : false
     ]
   ],
