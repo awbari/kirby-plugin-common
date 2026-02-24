@@ -9,8 +9,8 @@ function robots(bool $disallow, bool $sitemapEnabled)
   $robots = 'User-agent: *' . PHP_EOL;
   $robots .= ($disallow ? 'Disallow: /' : 'Disallow: /panel/') . PHP_EOL;
 
-  if ($sitemapEnabled) {
-    $robots .= $disallow ? '' : 'Sitemap: ' . url('sitemap.xml');
+  if ($sitemapEnabled && !$disallow) {
+    $robots .= 'Sitemap: ' . url('sitemap.xml');
   }
 
   return App::instance()
