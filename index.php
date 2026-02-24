@@ -7,7 +7,7 @@ use Kirby\Toolkit\Xml;
 function robots(bool $disallow, bool $sitemapEnabled)
 {
   $robots = 'User-agent: *' . PHP_EOL;
-  $robots .= ($disallow ? 'Disallow: /panel/' : 'Disallow: /') . PHP_EOL;
+  $robots .= ($disallow ? 'Disallow: /' : 'Disallow: /panel/') . PHP_EOL;
 
   if ($sitemapEnabled) {
     $robots .= $disallow ? '' : 'Sitemap: ' . url('sitemap.xml');
