@@ -1,7 +1,7 @@
 {
   "require": {
 		"getkirby/composer-installer": "^1.1",
-    "getkirby/cms": "4.0.0-beta.3",
+    "getkirby/cms": "^5",
     "stat0/common": "@dev"
 	},
   "config": {

@@ -3,7 +3,8 @@
   "description": "Stat0 Common Plugin",
   "type": "kirby-plugin",
   "version": "1.0.0",
-  "license": "Proprietary",
+  "license": "MIT",
+  "homepage": "https://github.com/awbari/kirby-plugin-common",
   "authors": [
     {
       "name": "stat0",
@@ -11,7 +12,7 @@
     }
   ],
   "require": {
-		"getkirby/composer-installer": "^1.1"
+		"getkirby/composer-installer": "^1.2"
 	},
   "config": {
     "allow-plugins": {
